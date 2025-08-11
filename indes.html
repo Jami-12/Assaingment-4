@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stay Anywhere</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Header -->
+  <header class="bg-white border-b shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-bold text-lg">Stay Anywhere <span class="text-sm font-normal text-gray-500">Book anywhere, anytime.</span></div>
+      <nav class="space-x-6 text-gray-600">
+        <a href="#" class="hover:text-blue-500">Home</a>
+        <a href="#" class="hover:text-blue-500">Hotel</a>
+        <a href="#" class="hover:text-blue-500">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="text-center py-6">
+    <h1 class="text-2xl font-bold">Experience</h1>
+    <p class="text-xl font-semibold">Comfort Like Never Before</p>
+  </section>
+
+  <!-- Search Section -->
+  <section class="max-w-6xl mx-auto bg-white rounded-lg shadow-md p-4 flex flex-col md:flex-row gap-4">
+    <!-- Left -->
+    <div class="flex-1">
+      <h2 class="font-semibold mb-2">Find Your Favorite Hotel</h2>
+      <p class="text-sm text-gray-500 mb-4">Search by district name or use the filters below.</p>
+      <div class="flex gap-2 mb-3">
+        <input id="searchInput" type="text" placeholder="Search for hotels/districts" class="border rounded px-3 py-2 flex-1">
+        <button onclick="filterHotels()" class="bg-blue-500 text-white px-4 py-2 rounded">Search</button>
+      </div>
+      <div class="flex gap-2">
+        <select id="districtFilter" class="border rounded px-3 py-2">
+          <option value="all">All District</option>
+        </select>
+        <select id="typeFilter" class="border rounded px-3 py-2">
+          <option value="all">ALL</option>
+          <option value="Premium">Premium</option>
+          <option value="Suite">Suite</option>
+          <option value="Regular">Regular</option>
+        </select>
+      </div>
+    </div>
+    <!-- Right -->
+    <div class="w-full md:w-64">
+      <img src="./images/hotelimage.jpg.jpg" alt="Our Residence" class="rounded-lg w-full h-40 object-cover">
+    </div>
+  </section>
+
+  <!-- Hotels Section -->
+  <section class="max-w-6xl mx-auto grid md:grid-cols-4 gap-4 mt-6">
+    <!-- Hotel Cards -->
+    <div id="hotelList" class="md:col-span-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Hotels will be rendered here -->
+    </div>
+
+    <!-- Cart -->
+    <div class="bg-white rounded-lg shadow-md p-4 h-fit">
+      <h3 class="font-semibold mb-2">Chosen Rooms</h3>
+      <div id="cartItems" class="text-gray-500 text-sm mb-3">No rooms chosen yet</div>
+      <div class="border-t pt-2 text-sm">
+        <div>Discount: <span id="discount">0</span></div>
+        <div>Total: <span id="total">0</span></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const hotels = [
+      {name:"Comfort in Every Room", district:"Cox's Bazar", type:"Premium", price:8000},
+      {name:"Premium & Suite Stay", district:"Dhaka", type:"Premium", price:6000},
+      {name:"Perfect Room Choice", district:"Sylhet", type:"Premium", price:5000},
+      {name:"Stay Easy, Stay Happy", district:"Bandarban", type:"Suite", price:4500},
+      {name:"Rooms Made for You", district:"Rangamati", type:"Regular", price:4000},
+      {name:"Relax, Rest, Repeat", district:"Sunamganj", type:"Suite", price:3000},
+      {name:"Great Quality", district:"Khagrachhari", type:"Regular", price:3000}
+    ];
+
+    const hotelList = document.getElementById('hotelList');
+    const cartItems = document.getElementById('cartItems');
+    const discountEl = document.getElementById('discount');
+    const totalEl = document.getElementById('total');
+    const districtFilter = document.getElementById('districtFilter');
+
+    let cart = [];
+
+    // Populate district filter
+    [...new Set(hotels.map(h => h.district))].forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d; opt.textContent = d; districtFilter.appendChild(opt);
+    });
+
+    function renderHotels(list){
+      hotelList.innerHTML = '';
+      list.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-lg shadow-md p-4 flex flex-col justify-between';
+        card.innerHTML = `
+          <div>
+            <span class="inline-block text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-600 mb-2">${h.type}</span>
+            <div class="text-lg font-bold mb-1">৳${h.price.toLocaleString()}</div>
+            <div class="text-sm mb-2">${h.name}</div>
+            <div class="text-gray-500 text-xs">${h.district}</div>
+          </div>
+          <button class="bg-blue-500 text-white px-3 py-1 rounded mt-3" onclick='addToCart(${JSON.stringify(h)})'>Add to Cart</button>
+        `;
+        hotelList.appendChild(card);
+      });
+    }
+
+    function addToCart(hotel){
+      cart.push(hotel);
+      renderCart();
+    }
+
+    function renderCart(){
+      if(cart.length === 0){
+        cartItems.textContent = 'No rooms chosen yet';
+        discountEl.textContent = '0';
+        totalEl.textContent = '0';
+        return;
+      }
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((c,i) => {
+        total += c.price;
+        const item = document.createElement('div');
+        item.className = 'flex justify-between text-sm mb-1';
+        item.innerHTML = `<span>${c.name}</span> <span>৳${c.price}</span>`;
+        cartItems.appendChild(item);
+      });
+      let discount = total > 10000 ? total * 0.1 : 0;
+      discountEl.textContent = discount.toFixed(0);
+      totalEl.textContent = (total - discount).toFixed(0);
+    }
+
+    function filterHotels(){
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const district = districtFilter.value;
+      const type = document.getElementById('typeFilter').value;
+      let filtered = hotels.filter(h =>
+        (district === 'all' || h.district === district) &&
+        (type === 'all' || h.type === type) &&
+        (h.name.toLowerCase().includes(search) || h.district.toLowerCase().includes(search))
+      );
+      renderHotels(filtered);
+    }
+
+    renderHotels(hotels);
+  </script>
+</body>
+</html>

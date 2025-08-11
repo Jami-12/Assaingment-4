@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel</title>
+  <!-- Tailwind CSS Link -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Font Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-100">
+  <main class="">
+
+    <!-- Header -->
+
+    <header class="bg-white px-4 sm:px-6 fixed top-0 left-0 w-full shadow z-50">
+      <div
+        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 max-w-6xl m-auto text-center sm:text-left">
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold">Stay Anywhere</h1>
+          <p class="text-xs sm:text-sm text-gray-600">Book anywhere, anytime.</p>
+        </div>
+
+        <nav class="flex justify-center sm:justify-end gap-3 sm:gap-4 mt-3 sm:mt-0 flex-wrap">
+          <a href="#" class="hover:underline">Home</a>
+          <a href="#hotel" class="hover:underline">Hotel</a>
+          <a href="" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Text Section -->
+
+    <section class="bg-gray-100 mt-28 sm:mt-20 flex">
+      <div class="max-w-6xl m-auto flex flex-col items-center justify-center text-center py-6 px-4">
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold">Experience</h1>
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold">Comfort Like Never Before</h1>
+      </div>
+    </section>
+    <!-- search -->
+
+
+    <section class="mt-8 px-4">
+      <div
+        class="max-w-6xl m-auto flex flex-col-reverse lg:flex-row items-center bg-gray-50 shadow rounded-md px-6 py-6 gap-6">
+
+        <div class="flex-6 w-full">
+          <div>
+            <h1 class="font-bold text-xl sm:text-2xl">Find Your Favorite Hotel</h1>
+            <p class="text-sm sm:text-[.8rem] text-gray-600">Search by district name or use the filters below.</p>
+          </div>
+
+          <div>
+            <div class="flex flex-col sm:flex-row gap-3 mt-5">
+              <input id="searchBox" type="search" placeholder="Search for hotels/districts..."
+                class="border border-black rounded-md px-3 py-[.3rem] sm:w-auto ">
+              <button
+                class="px-6 py-[.3rem] bg-sky-500 text-white cursor-pointer hover:bg-sky-600 transition-all duration-75 border font-semibold rounded-md">
+                Search
+              </button>
+            </div>
+
+            <div class="mt-5 flex flex-col sm:flex-row gap-3">
+              <select class="shadow-md border text-gray-700 text-sm px-2 py-[.2rem] rounded-[3px] w-full sm:w-auto">
+                <option value="">All District</option>
+                <option value="">Cox's Bazar</option>
+                <option value="">Dhaka</option>
+                <option value="">Sylhet</option>
+                <option value="">Bandarban</option>
+                <option value="">Rangamati</option>
+                <option value="">Khagrachhari</option>
+              </select>
+              <select class="border text-gray-700 text-sm shadow-md px-2 py-[.2rem] rounded-[3px] w-full sm:w-auto">
+                <option value="">ALL</option>
+                <option value="">Premium</option>
+                <option value="">Suite</option>
+                <option value="">Regular</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-4 flex flex-col items-center text-center">
+          <h1 class="font-bold text-lg sm:text-xl mb-3">Our Residence</h1>
+          <img src="./images/hotelimage.jpg.jpg" alt="" class="h-48 sm:h-60 w-full sm:w-auto object-cover rounded-md">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Hotels -->
+    <section id="hotel">
+      <div class=" max-w-6xl m-auto items-center justify-center text-center mt-5">
+        <h1 class="text-2xl font-bold">Hotels</h1>
+      </div>
+    </section>
+
+    <!-- Card Section -->
+    <section id="cardSct" class="px-4 sm:px-4">
+      <div class="flex flex-col-reverse  lg:flex-row max-w-6xl m-auto gap-7 mt-6">
+        <!-- Cards -->
+        <div class="flex-7 mt-6 grid  grid-cols-1  sm:grid-cols-2 md:grid-cols-3 gap-5 mb-8">
+
+          <!-- Card No One -->
+          <div
+            class="w-full bg-white rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-400 overflow-hidden"
+            onclick="handleClick(this)">
+            <div class="flex flex-col items-center p-6">
+              <div class="bg-slate-300 p-4 rounded-full mb-3">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+              <p class="text-gray-600 text-sm">Cox's Bazar</p>
+              
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-gray-100 text-black px-2 py-1 rounded-full">Premium</span>
+              </div>
+                <span class="text-lg font-bold text-gray-800">8,000</span>
+                <h3 class="text-base font-semibold text-gray-900">Comfort in Every Room</h3>
+                <p class="text-sm text-gray-600 mb-4">Cox's Bazar</p>            
+              <button
+                class="w-full bg-sky-500 text-white py-[.6rem] cursor-pointer rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card No Two -->
+
+          <div
+            class="w-full bg-white rounded-lg shadow overflow-hidden hover:shadow-xl hover:scale-105 transition duration-300"
+            onclick="handleClick(this)">
+            <div class="flex flex-col items-center p-6">
+              <div class="bg-slate-300 p-4 rounded-full mb-3">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+              <p class="text-gray-600 text-sm">Dhaka</p>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded-full">Premium</span>
+
+              </div>
+             
+                <span class="text-lg font-bold text-gray-800">6,000</span>
+                <h3 class="text-base font-semibold text-gray-900">Premium & Suite Stay</h3>
+                <p class="text-sm text-gray-600 mb-4">Dhaka</p>
+             
+              <button
+                class="w-full bg-sky-500 text-white py-2 cursor-pointer rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card No Three -->
+
+          <div
+            class="w-full bg-white rounded-lg shadow overflow-hidden hover:shadow-xl hover:scale-105 transition duration-300"
+            onclick="handleClick(this)">
+            <div class="flex flex-col items-center p-6">
+              <div class="bg-slate-300 p-4 rounded-full mb-3">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+              <p class="text-gray-600 text-sm">Sylhet</p>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded-full">Premium</span>
+
+              </div>
+             
+                <span class="text-lg font-bold text-gray-800">5,000</span>
+                <h3 class="text-base font-semibold text-gray-900">Perfect Room Choice</h3>
+                <p class="text-sm text-gray-600 mb-4">Sylhet</p>
+           
+              <button
+                class="w-full bg-sky-500 text-white py-2 cursor-pointer rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card No Four -->
+
+          <div
+            class="w-full bg-white rounded-lg shadow overflow-hidden hover:shadow-xl hover:scale-105 transition duration-300"
+            onclick="handleClick(this)">
+            <div class="flex flex-col items-center p-6">
+              <div class="bg-slate-300 p-4 rounded-full mb-3">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+              <p class="text-gray-600 text-sm">Bandarban</p>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded-full">Suite</span>
+
+              </div>
+           
+                <span class="text-lg font-bold text-gray-800">4,500</span>
+                <h3 class="text-base font-semibold text-gray-900">Stay Easy, Stay Happy</h3>
+                <p class="text-sm text-gray-600 mb-4">Bandarban</p>
+           
+              <button
+                class="w-full bg-sky-500 text-white py-2 cursor-pointer rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card No Five -->
+
+          <div
+            class="w-full bg-white rounded-lg shadow overflow-hidden hover:shadow-xl hover:scale-105 transition duration-300"
+            onclick="handleClick(this)">
+            <div class="flex flex-col items-center p-6">
+              <div class="bg-slate-300 p-4 rounded-full mb-3">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+              <p class="text-gray-600 text-sm">Rangamati</p>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded-full">Regular</span>
+
+              </div>
+              
+                <span class="text-lg font-bold text-gray-800">4,000</span>
+                <h3 class="text-base font-semibold text-gray-900">Rooms Made for You</h3>
+                <p class="text-sm text-gray-600 mb-4">Rangamati</p>
+              
+              <button
+                class="w-full bg-sky-500 text-white py-2 cursor-pointer rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card No Six -->
+
+          <div
+            class="w-full bg-white rounded-lg shadow overflow-hidden hover:shadow-xl hover:scale-105 transition duration-300"
+            onclick="handleClick(this)">
+            <div class="flex flex-col items-center p-6">
+              <div class="bg-slate-300 p-4 rounded-full mb-3">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+              <p class="text-gray-600 text-sm">Sunamgang</p>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded-full">Suite</span>
+
+              </div>
+           
+                <span class="text-lg font-bold text-gray-800">3,000</span>
+                <h3 class="text-base font-semibold text-gray-900">Relax, Rest, Repeat</h3>
+                <p class="text-sm text-gray-600 mb-4">Sunamgang</p>
+              
+              <button
+                class="w-full bg-sky-500 text-white py-2 cursor-pointer rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card No Seven -->
+
+          <div
+            class="w-full bg-white rounded-lg shadow overflow-hidden hover:shadow-xl hover:scale-105 transition duration-300"
+            onclick="handleClick(this)">
+            <div class="flex flex-col items-center p-6">
+              <div class="bg-slate-300 p-4 rounded-full mb-3">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+              <p class="text-gray-600 text-sm">Khagrachhari</p>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded-full">Regular</span>
+
+              </div>
+              
+                <span class="text-lg font-bold text-gray-800">3,000</span>
+                <h3 class="text-base font-semibold text-gray-900">Great Quality </h3>
+                <p class="text-sm text-gray-600 mb-4">Khagrachhari</p>
+             
+              <button
+                class="w-full bg-sky-500 text-white cursor-pointer py-2 rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <div class="flex-3 mt-6 w-full lg:w-auto">
+          <div class="max-w-xs p-5 bg-white rounded-lg shadow border border-gray-300 mx-auto">
+            <div class="flex justify-between items-center mb-4">
+              <h2 class="text-gray-800 font-semibold text-lg">Chosen Rooms</h2>
+              <span class="text-sm bg-white text-blue-600 rounded-full px-3 py-0.5 font-medium"></span>
+            </div>
+
+            <div class=" mt-4 text-gray-700 font-medium">
+              <ul id="nameList" class="border-b-2 mb-4 pb-4">
+                <li></li>
+              </ul>
+             
+             
+            </div>
+
+            <div class="flex flex-col justify-between mt-2 pt-2 border-t border-gray-300">
+              <strong class="text-gray-900 text-lg">Total:</strong>
+              <strong class="text-gray-900 text-lg"> Discount:</strong>
+              <strong class="text-gray-900 text-lg"> Discount Total:</strong>
+
+               <div class="flex gap-3 mt-3">
+                 <button
+                class="w-full bg-sky-500 text-white cursor-pointer py-2 rounded-md hover:bg-sky-600 transition-colors duration-300">
+                Booking
+              </button>
+               <button id="removeBtn"
+                class="w-full bg-red-500 text-white cursor-pointer py-2 rounded-md hover:bg-red-600 transition-colors duration-300">
+                Remove
+              </button>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <footer class="bg-gray-800 text-gray-200 py-8">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
+        <div class="mb-4 text-center">
+          <h1 class="text-2xl font-bold">Our Residence</h1>
+          <p class="text-sm text-gray-400">Experience comfort and luxury</p>
+        </div>
+      </div>
+
+      <div class="text-center text-gray-500 text-sm mt-6">
+        &copy; 2025 Our Residence. All rights reserved.
+      </div>
+    </footer>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
